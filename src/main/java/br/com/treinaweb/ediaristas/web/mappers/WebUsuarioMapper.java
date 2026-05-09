@@ -5,6 +5,7 @@ import org.mapstruct.factory.Mappers;
 
 import br.com.treinaweb.ediaristas.core.models.Usuario;
 import br.com.treinaweb.ediaristas.web.dtos.UsuarioCadastroForm;
+import br.com.treinaweb.ediaristas.web.dtos.UsuarioEdicaoForm;
 
 @Mapper(componentModel = "spring")
 public interface WebUsuarioMapper {
@@ -13,4 +14,8 @@ public interface WebUsuarioMapper {
 
   Usuario toModel(UsuarioCadastroForm form);
 
+  Usuario toModel(UsuarioEdicaoForm form);
+
+  UsuarioEdicaoForm toForm(Usuario Model);
+  
 }
