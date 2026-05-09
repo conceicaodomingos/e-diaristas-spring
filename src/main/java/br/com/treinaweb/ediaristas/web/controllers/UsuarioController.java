@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,7 +46,14 @@ public class UsuarioController {
 
     service.cadastrar(cadastroForm);
     attrs.addFlashAttribute("alert", new FlashMessages("alert-success", "Usuário cadastrado com sucesso!"));
-    
+
     return "redirect:/admin/usuarios";
   }  
+
+  @GetMapping("/{id}/excluir")
+  public String excluir(@PathVariable Long id, RedirectAttributes attrs) {
+    service.excluirPorId(id);
+    attrs.addFlashAttribute("alert", new FlashMessages("alert-success", "Usuário excluido com sucesso!"));
+    return "redirect:/admin/usuarios";
+  }
 }
